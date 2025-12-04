@@ -1,5 +1,4 @@
 import java.text.Format;
-
 public class Dessert {
     int flavor;
     int price;
@@ -7,6 +6,7 @@ public class Dessert {
     {
         this.flavor=flavor;
         this.price=price;
+
     }
     static int numDesserts=0;
     public void printDessert()
@@ -15,10 +15,7 @@ public class Dessert {
         String s=String.format("%d %d %d",this.flavor,this.price,numDesserts);
         System.out.println(s);
     }
-
     static void main() {
         System.out.println("I love dessert !");
     }
-
-
 }
