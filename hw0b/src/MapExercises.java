@@ -9,10 +9,9 @@ public class MapExercises {
     public static Map<Character, Integer> letterToNum() {
         // TODO: Fill in this function.
         Map<Character,Integer>letter=new HashMap<>();
-        String a="abcdefghijklnmopqrstuvwxy";
-        for (int i=0;i<a.length();i++)
+        for(char c='a';c <='z';c++)
         {
-            letter.put(a.charAt(i),i);
+            letter.put(c,c-'a');
         }
         return letter;
     }
