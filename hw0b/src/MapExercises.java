@@ -11,7 +11,7 @@ public class MapExercises {
         Map<Character,Integer>letter=new HashMap<>();
         for(char c='a';c <='z';c++)
         {
-            letter.put(c,c-'a');
+            letter.put(c,c-'a'+1);
         }
         return letter;
     }
@@ -38,6 +38,6 @@ public class MapExercises {
            map.put(i,map.getOrDefault(i,0)+1);
 
         }
-        return null;
+        return map;
     }
 }
