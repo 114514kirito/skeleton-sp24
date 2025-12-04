@@ -19,7 +19,7 @@ public class JavaExercises {
             return new String[]{"beyti", "pizza", "hamburger", "tea"};
         }
         else if(customer.equals("Erik")){
-            return new String[]{"beyti", "pizza", "hamburger", "tea"};
+            return new String[]{"sushi", "pasta", "avocado", "coffee"};
         }
         else {
             return new String[3];
