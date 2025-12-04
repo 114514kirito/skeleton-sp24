@@ -42,7 +42,6 @@ public class JavaExercises {
        }
         return max-min;
     }
-
     /**
       * Uses recursion to compute the hailstone sequence as a list of integers starting from an input number n.
       * Hailstone sequence is described as:
