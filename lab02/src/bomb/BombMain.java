@@ -18,7 +18,7 @@ public class BombMain {
             b.phase1(lst); // Figure this out too
         }
         if (phase >= 2) {
-            b.phase2("Figure this out. I wonder where the phases are defined...");
+            b.phase2("-81201430");
         }
     }
 }
