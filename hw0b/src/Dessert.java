@@ -10,12 +10,14 @@ public class Dessert {
 
     }
     static int numDesserts=0;
-    public void printDessert()
+    public  void printDessert()
     {
-        String s=String.format("%d %d %d",this.flavor,this.price,numDesserts);
+        String s=String.format("%d %d %d",flavor,price,numDesserts);
         System.out.println(s);
     }
     public static void main(String[] args) {
         System.out.println("I love dessert!");
+
+
     }
 }
