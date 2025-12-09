@@ -168,12 +168,16 @@ public class Model {
         }
         if (targetY <size-1){
             Tile up=board.tile(x,targetY+1);
-            if( up!=null&& up.value()==myValue  && !up.wasMerged()) {
-                targetY+=1;
-                score+=myValue*2;
+            if( up!=null&& up.value()==myValue  && !up.wasMerged() && !currTile.wasMerged()) {
+                board.move(x,targetY+1,currTile);
+                score+=2*myValue;
+                return;
             };
         }
-        board.move(x,targetY,currTile);
+        if(targetY !=y){
+            board.move(x,targetY,currTile);
+        }
+
 
         // TODO: Tasks 5, 6, and 10. Fill in this function.
     }
@@ -184,7 +188,7 @@ public class Model {
      * so we are tilting the tiles in this column up.
      * */
     public void tiltColumn(int x) {
-        for (int y=board.size()-1;y>-1;y--){
+        for (int y=board.size()-2;y>=0;y--){
             moveTileUpAsFarAsPossible(x,y);
         }
         // TODO: Task 7. Fill in this function.
