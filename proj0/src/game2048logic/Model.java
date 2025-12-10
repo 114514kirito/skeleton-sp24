@@ -85,8 +85,8 @@ public class Model {
      *  Empty spaces are stored as null.
      * */
     public boolean emptySpaceExists() {
-        int size=board.size();
-        for(int x=0;x<size;x++){
+        int size = board.size();
+        for (int x = 0;x<size;x++){
             for (int y=0;y<size;y++){
                 Tile t=board.tile(x,y);
                 if (t ==null)return true;
@@ -168,7 +168,7 @@ public class Model {
         }
         if (targetY <size-1){
             Tile up=board.tile(x,targetY+1);
-            if( up!=null&& up.value()==myValue  && !up.wasMerged() && !currTile.wasMerged()) {
+            if( up!=null&& up.value()==myValue  && !up.wasMerged() ) {
                 board.move(x,targetY+1,currTile);
                 score+=2*myValue;
                 return;
