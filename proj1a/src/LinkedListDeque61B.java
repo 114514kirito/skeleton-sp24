@@ -39,11 +39,10 @@ public class LinkedListDeque61B<T> implements Deque61B<T>{
 
     @Override
     public void addLast(T x) {
-        Node last=new Node(sentinel,x,sentinel);
+        Node last=new Node(sentinel.prev,x,sentinel);
         sentinel.prev.next=last;
         sentinel.prev=last;
         size+=1;
-
     }
 
     @Override
@@ -69,25 +68,35 @@ public class LinkedListDeque61B<T> implements Deque61B<T>{
 
     @Override
     public T removeFirst() {
+        if (size==0)return null;
         T items=sentinel.next.items;
         sentinel.next.next.prev=sentinel;
         sentinel.next=sentinel.next.next;
+        size-=1;
         return items;
+
     }
 
     @Override
     public T removeLast() {
-        T items=sentinel.prev.items;
-        sentinel.prev.prev.next=sentinel;
-        sentinel.prev=sentinel.prev.prev;
+        if(size==0)return null;
+        size-=1;
+        Node last=sentinel.prev;
+        T items=last.items;
+        Node newLast=sentinel.prev.prev;
+        sentinel.prev=newLast;
+        newLast.next=sentinel;
         return items;
     }
 
     @Override
     public T get(int index) {
+        if(this.size==0 || index <0){
+            return null;
+        }
         Node P=sentinel.next;
         int count=0;
-        while (P!=sentinel &&count!=size){
+        while (P!=sentinel &&count!=size-1){
             P=P.next;
             count+=1;
         }
@@ -100,6 +109,10 @@ public class LinkedListDeque61B<T> implements Deque61B<T>{
     }
     @Override
     public T getRecursive(int index) {
+        if(index <0 || size==0)
+        {
+            return null;
+        }
         return getRecursive(index,sentinel.next);
     }
 }
