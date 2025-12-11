@@ -172,7 +172,7 @@ public class Model {
                 board.move(x,targetY+1,currTile);
                 score+=2*myValue;
                 return;
-            };
+            }
         }
         if(targetY !=y){
             board.move(x,targetY,currTile);
