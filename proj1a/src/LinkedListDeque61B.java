@@ -91,12 +91,12 @@ public class LinkedListDeque61B<T> implements Deque61B<T>{
 
     @Override
     public T get(int index) {
-        if(this.size==0 || index <0){
+        if(this.size==0 || index <0 ||index>size){
             return null;
         }
         Node P=sentinel.next;
         int count=0;
-        while (P!=sentinel &&count!=size-1){
+        while (P!=sentinel &&count!=index){
             P=P.next;
             count+=1;
         }
