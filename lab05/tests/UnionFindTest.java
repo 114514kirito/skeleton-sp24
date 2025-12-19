@@ -85,6 +85,59 @@ public class UnionFindTest {
      * Specifically, you may want to write a test for path compression and to check for the correctness
      * of all methods in your implementation.
      */
+        /* ---------------- 基础状态 ---------------- */
+    @Test
+    public void pathCompressionTest() {
+        UnionFind uf = new UnionFind(6);
+        uf.union(0, 1);
+        uf.union(1, 2);
+        uf.union(2, 3);
+        uf.union(3, 4);
+        uf.union(4, 5);
+
+        int root = uf.find(0);
+
+        // 所有节点 find 后都应该直接指向 root
+        for (int i = 0; i < 6; i++) {
+            assertThat(uf.find(i)).isEqualTo(root);
+            assertThat(uf.parent(i)).isAnyOf(root, -6);
+        }
+    }
+    @Test
+    public void sizeOfTest() {
+        UnionFind uf = new UnionFind(5);
+        assertThat(uf.sizeOf(0)).isEqualTo(1);
+
+        uf.union(0, 1);
+        assertThat(uf.sizeOf(0)).isEqualTo(2);
+        assertThat(uf.sizeOf(1)).isEqualTo(2);
+
+        uf.union(2, 3);
+        uf.union(0, 2);
+        assertThat(uf.sizeOf(3)).isEqualTo(4);
+    }
+    @Test
+    public void repeatedUnionTest() {
+        UnionFind uf = new UnionFind(3);
+        uf.union(0, 1);
+        uf.union(0, 1);
+        uf.union(1, 0);
+
+        assertThat(uf.sizeOf(0)).isEqualTo(2);
+        assertThat(uf.connected(0, 1)).isTrue();
+    }
+    @Test
+    public void illegalConnectedTest() {
+        UnionFind uf = new UnionFind(3);
+        try {
+            uf.connected(-1, 2);
+            fail("Should throw exception for negative index");
+        } catch (IllegalArgumentException e) {
+            // expected
+        }
+    }
+
+
 
 }
 
